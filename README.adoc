@@ -1,3 +1,5 @@
+image:https://circleci.com/gh/ghilainm/camel-spring-boot-showcase/tree/develop.svg?style=svg["CircleCI", link="https://circleci.com/gh/ghilainm/camel-spring-boot-showcase/tree/develop"]
+
 == Purpose of project
 
 This project showcase integration between Camel and Opentelemetry auto instrumentation agent.
