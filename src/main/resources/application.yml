@@ -1,0 +1,13 @@
+camel:
+  component:
+    kafka:
+      brokers: localhost:9092
+      group-id: camel-spring-boot-showcase
+      auto-commit-enable: false
+      auto-offset-reset: latest
+      header-deserializer: "#CustomKafkaHeaderDeserializer"
+  springboot:
+    main-run-controller: true
+logging:
+  level:
+    root: warn
