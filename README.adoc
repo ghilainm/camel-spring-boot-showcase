@@ -8,10 +8,15 @@ It shows in particular at the moment that the trace id is not propagated between
 
 ==  How to reproduce
 
-* Start jaeger using jaeger/start-jaeger.sh (you need docker-compose)
+* Start jaeger using jaeger/start-jaeger.sh (you need docker-compose and docker), if you don't want you can use the other version of the bootRun task (modify build.gradle). However, you won't have access to jaeger UI.
 * Start Spring Boot application `gradle bootRun`
 * Open browser and hit URL http://localhost:8080/generate-new-kafka-record
 ** This generates a new kafka record in topic input
 ** The record is forwarded using camel route to topic output
 ** The records are visible in data/<topic> directory (done via the Camel route TopicToFileRoute)
 * Check traces generated in Jaeger http://localhost:16686/ (see that they are two new traces instead of one which is expected)
+
+== URLs
+
+* http://localhost:16686/[Jaeger UI]
+* http://localhost:8080/generate-new-kafka-record[Generate new kafka record]
