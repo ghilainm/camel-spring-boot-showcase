@@ -12,12 +12,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class HttpKafkaRoute extends RouteBuilder {
 
-    public static final AtomicInteger KEY_GENERATOR = new AtomicInteger();
     public static final String OUTPUT_TOPIC = "input-topic";
 
     @Override
     public void configure() {
-        from("netty-http:http:0.0.0.0:8080/hello")
+        from("netty-http:http:0.0.0.0:8080/generate-new-kafka-record")
                 .setBody().constant("Hi!")
                 .log("Message generated with headers ${headers}")
                 .setHeader(KafkaConstants.KEY, simple("${bean:KeyGenerator.nextKey}"))

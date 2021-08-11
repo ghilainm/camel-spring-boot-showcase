@@ -1,0 +1,15 @@
+== Purpose of project
+
+This project showcase integration between Camel and Opentelemetry auto instrumentation agent.
+
+It shows in particular at the moment that the trace id is not propagated between input and output Kafka topics which is not expected (issue opened on Camel side).
+
+==  How to reproduce
+
+* Start jaeger using jaeger/start-jaeger.sh (you need docker-compose)
+* Start Spring Boot application `gradle bootRun`
+* Open browser and hit URL http://localhost:8080/generate-new-kafka-record
+** This generates a new kafka record in topic input
+** The record is forwarded using camel route to topic output
+** The records are visible in data/<topic> directory (done via the Camel route TopicToFileRoute)
+* Check traces generated in Jaeger http://localhost:16686/ (see that they are two new traces instead of one which is expected)
